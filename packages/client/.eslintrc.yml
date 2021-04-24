@@ -1,0 +1,25 @@
+env:
+  es2020: true
+parser: '@typescript-eslint/parser'
+parserOptions:
+  ecmaFeatures:
+    jsx: true
+  ecmaVersion: 2020
+  project: [
+    './tsconfig.json',
+  ]
+  sourceType: 'module'
+extends:
+  - 'tuxsnct-typescript'
+  - 'plugin:react/recommended'
+  - "plugin:monorepo/recommended"
+plugins:
+  - 'react'
+  - 'react-hooks'
+  - 'monorepo'
+settings:
+  react:
+    version: 'detect'
+rules:
+  'no-use-before-define': 0
+  'react/prop-types': 0

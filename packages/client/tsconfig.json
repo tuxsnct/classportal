@@ -1,0 +1,11 @@
+{
+	"compilerOptions": {
+    "lib": ["es6", "dom"],
+		"jsx": "react",
+		"moduleResolution": "node",
+		"esModuleInterop": true,
+    "noImplicitAny": true,
+    "noImplicitThis": true,
+    "strictNullChecks": true
+  }
+}

@@ -16,6 +16,7 @@
   "license": "Apache-2.0",
   "author": "Tux <tuxsnct@gmail.com>",
   "scripts": {
+    "lint": "eslint './{src,.}/**/*.{ts,tsx}'",
     "sort": "sort-package-json"
   },
   "dependencies": {
