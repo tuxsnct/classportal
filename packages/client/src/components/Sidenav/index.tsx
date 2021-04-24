@@ -6,7 +6,7 @@ const Sidenav = tw.div`
 `
 const SidenavLink = tw(Link)`flex w-screen sm:w-56 px-2 ripple-bg-gray-200`
 const SidenavLinkExt = tw.a`flex w-screen sm:w-56 px-2 ripple-bg-gray-200`
-const SidenavLabel = tw.span`flex w-full h-12 justify-center items-center whitespace-nowrap`
+const SidenavLabel = tw.span`flex justify-center items-center w-full h-12 text-lg whitespace-nowrap`
 
 export {
   Sidenav,

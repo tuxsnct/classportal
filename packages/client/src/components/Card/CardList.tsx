@@ -5,7 +5,7 @@ type CardListProps = {
   children: ReactNode
 }
 
-const List = tw.div`w-full h-full p-4 box-border`
+const List = tw.div`w-full h-full p-4 box-border overflow-x-hidden`
 
 const CardList: FC<CardListProps> = (props: CardListProps) => {
   return (

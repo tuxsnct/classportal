@@ -8,13 +8,13 @@ const config = {
     'gatsby-plugin-image',
     {
       options: {
-        background_color: '#f7f0eb',
+        background_color: '#ffffff',
         display: 'standalone',
-        icons: [],
+        icon: './src/assets/logo.png',
         name: siteMetadata.title,
         short_name: siteMetadata.title,
         start_url: '/',
-        theme_color: '#a2466c'
+        theme_color: '#014229'
       },
       resolve: 'gatsby-plugin-manifest'
     },
