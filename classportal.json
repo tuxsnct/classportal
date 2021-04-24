@@ -1,10 +1,15 @@
 {
-  "siteMetadata": {
-    "title": "ClassPortal",
-    "titleTemplate": "%s - ClassPortal",
-    "defaultTitle": "ClassPortal",
-    "defaultDescription": "Scalable, fast, classroom portal",
-    "siteUrl": "https://classportal.tuxsnct.com/",
-    "thumbnail": ""
+  "client": {
+    "siteMetadata": {
+      "title": "ClassPortal",
+      "titleTemplate": "%s - ClassPortal",
+      "defaultTitle": "ClassPortal",
+      "defaultDescription": "Scalable, fast, classroom portal",
+      "siteUrl": "https://classportal.tuxsnct.com/",
+      "thumbnail": ""
+    }
+  },
+  "server": {
+    "allowOrigin": "*"
   }
 }

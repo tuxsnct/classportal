@@ -1,8 +1,9 @@
 {
-	"compilerOptions": {
-		"noEmit": true,
-		"declaration": true,
-		"moduleResolution": "node",
-		"esModuleInterop": true
-	}
+  "compilerOptions": {
+    "noEmit": true,
+    "declaration": true,
+    "resolveJsonModule": true,
+    "moduleResolution": "node",
+    "esModuleInterop": true
+  }
 }
