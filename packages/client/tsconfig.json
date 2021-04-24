@@ -1,7 +1,10 @@
 {
 	"compilerOptions": {
     "lib": ["es6", "dom"],
-		"jsx": "react",
+		"jsx": "preserve",
+    "jsxFactory": "React.createElement",
+    "jsxFragmentFactory": "React.Fragment",
+    "jsxImportSource": "@emotion/react",
 		"moduleResolution": "node",
 		"esModuleInterop": true,
     "noImplicitAny": true,

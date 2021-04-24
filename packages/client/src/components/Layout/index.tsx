@@ -1,57 +1,71 @@
-import menuIcon from '@iconify-icons/mdi/menu'
-import { InlineIcon } from '@iconify/react'
-import AppBar from '@material-ui/core/AppBar'
-import IconButton from '@material-ui/core/IconButton'
-import Toolbar from '@material-ui/core/Toolbar'
-import Typography from '@material-ui/core/Typography'
-import { ThemeProvider } from '@material-ui/core/styles'
-import { graphql, useStaticQuery } from 'gatsby'
+import documentIcon from '@iconify-icons/mdi/document'
+import githubIcon from '@iconify-icons/mdi/github'
+import homeIcon from '@iconify-icons/mdi/home'
 import React, { FC, ReactNode } from 'react'
-import { StoreContext } from 'storeon/react'
-import { SEO } from '../'
+import { StoreContext, useStoreon } from 'storeon/react'
+import tw, { GlobalStyles } from 'twin.macro'
+import {
+  AppBar,
+  Flex,
+  Icon,
+  Main,
+  SEO,
+  Sidenav,
+  SidenavLink,
+  SidenavLinkExt,
+  SidenavLabel
+} from '../'
 import { store } from '../../store'
-import { theme } from './theme'
 
 type LayoutProps = {
   children?: ReactNode
-  description?: string
   title?: string
 }
 
-const Layout: FC<LayoutProps> = (props: LayoutProps) => {
-  const { site } = useStaticQuery(query)
-  const { defaultTitle } = site.siteMetadata
+const LayoutContainer = tw.div`w-screen h-screen bg-gray-100`
 
+const BaseLayout: FC<LayoutProps> = (props: LayoutProps) => {
   return (
-    <StoreContext.Provider value={store}>
-      <SEO />
-      <ThemeProvider theme={theme}>
-        <AppBar position="fixed">
-          <Toolbar>
-            <IconButton edge="start" color="inherit" aria-label="menu">
-              <InlineIcon icon={menuIcon} />
-            </IconButton>
-            <Typography variant="h6">
-              { props.title || defaultTitle }
-            </Typography>
-          </Toolbar>
-        </AppBar>
-        { props.children }
-      </ThemeProvider>
-    </StoreContext.Provider>
+    <LayoutContainer>
+      <SEO title={props.title} />
+      <GlobalStyles />
+      <StoreContext.Provider value={store}>
+        <AppBar title={props.title} />
+        {props.children}
+      </StoreContext.Provider>
+    </LayoutContainer>
   )
 }
 
-export const query = graphql`
-  query {
-    site {
-      siteMetadata {
-        defaultTitle
-      }
-    }
-  }
-`
+const DashboardLayout: FC = (props) => {
+  const { sidenavVisibility } = useStoreon('sidenavVisibility')
+
+  return (
+    <>
+      <Flex css={tw`flex-row w-screen h-screen pt-16 pb-2 box-border`}>
+        <Sidenav css={sidenavVisibility && tw`hidden sm:flex`}>
+          <SidenavLink to="/">
+            <Icon icon={homeIcon} />
+            <SidenavLabel>ホーム</SidenavLabel>
+          </SidenavLink>
+          <SidenavLinkExt href="https://github.com/tuxsnct/classportal">
+            <Icon icon={documentIcon} />
+            <SidenavLabel>ドキュメント</SidenavLabel>
+          </SidenavLinkExt>
+          <SidenavLinkExt href="https://github.com/tuxsnct/classportal">
+            <Icon icon={githubIcon} />
+            <SidenavLabel>ソースコード</SidenavLabel>
+          </SidenavLinkExt>
+        </Sidenav>
+        <Main>
+          {props.children}
+        </Main>
+      </Flex>
+    </>
+  )
+}
 
 export {
-  Layout
+  BaseLayout,
+  DashboardLayout
 }

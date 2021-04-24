@@ -1,10 +1,19 @@
 import { graphql } from 'gatsby'
 import React, { FC } from 'react'
-import { Layout } from '../components'
+import {
+  BaseLayout,
+  CardList,
+  DashboardLayout
+} from '../components'
 
 const IndexPage: FC = () => {
   return (
-    <Layout />
+    <BaseLayout title="ホーム">
+      <DashboardLayout>
+        <CardList>
+        </CardList>
+      </DashboardLayout>
+    </BaseLayout>
   )
 }
 

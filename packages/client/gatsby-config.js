@@ -1,26 +1,28 @@
 // eslint-disable-next-line @typescript-eslint/no-var-requires
-const { client } = require('../../classportal.json')
-const { siteMetadata } = client
+const classportal = require('../../classportal.json')
+const { siteMetadata } = classportal.config.client
 
-module.exports = {
+const config = {
   plugins: [
     'gatsby-plugin-emotion',
+    'gatsby-plugin-image',
     {
       options: {
         background_color: '#f7f0eb',
         display: 'standalone',
         icons: [],
-        name: 'GatsbyJS',
-        short_name: 'GatsbyJS',
+        name: siteMetadata.title,
+        short_name: siteMetadata.title,
         start_url: '/',
         theme_color: '#a2466c'
       },
       resolve: 'gatsby-plugin-manifest'
     },
-    'gatsby-plugin-material-ui',
     'gatsby-plugin-offline',
+    'gatsby-plugin-postcss',
     'gatsby-plugin-preact',
     'gatsby-plugin-react-helmet',
+    'gatsby-plugin-sharp',
     {
       options: {
         allExtensions: true,
@@ -28,7 +30,8 @@ module.exports = {
         jsxPragma: 'h'
       },
       resolve: 'gatsby-plugin-typescript'
-    }
+    },
+    'gatsby-transformer-sharp'
   ],
   siteMetadata: {
     title: siteMetadata.title,
@@ -39,3 +42,5 @@ module.exports = {
     thumbnail: siteMetadata.thumbnail
   }
 }
+
+module.exports = config
