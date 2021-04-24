@@ -1,0 +1,9 @@
+{
+	"compilerOptions": {
+		"noEmit": true,
+		"declaration": true,
+		"jsx": "react",
+		"moduleResolution": "node",
+		"esModuleInterop": true
+	}
+}
