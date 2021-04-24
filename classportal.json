@@ -10,6 +10,7 @@
     }
   },
   "server": {
+    "port": "8080",
     "allowOrigin": "*"
   }
 }

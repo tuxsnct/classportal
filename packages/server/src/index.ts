@@ -1,23 +1,33 @@
-import express, { Express, Request, Response, NextFunction } from 'express'
+import { ApolloServer, gql } from 'apollo-server-express'
+import express from 'express'
 import classportal from '../../../classportal.json'
 
-const app: Express = express()
-const PORT = 8080
+const PORT = classportal.server.port
 
-const allowCrossDomain = (req: Request, res: Response, next: NextFunction): void => {
-  res.header('Access-Control-Allow-Origin', classportal.server.allowOrigin)
-  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept')
-  next()
+// Construct a schema, using GraphQL schema language
+const typeDefs = gql`
+  type Query {
+    hello: String
+  }
+`
+
+// Provide resolver functions for your schema fields
+const resolvers = {
+  Query: {
+    hello: () => {
+      return 'Hello world!'
+    }
+  }
 }
 
-app.use(allowCrossDomain)
-app.use(express.json())
-app.use(express.urlencoded({ extended: false }))
+const server = new ApolloServer({ typeDefs, resolvers })
 
-app.get('/', (req, res) => {
-  res.status(200).send('OK')
-})
+const app = express()
+server.applyMiddleware({ app })
 
-app.listen(PORT, 'localhost', () => {
-  console.log(`Start on port ${PORT}.`)
-})
+app.listen(
+  { port: PORT },
+  () => {
+    return console.log(`🚀 Server ready at http://localhost:${PORT}${server.graphqlPath}`)
+  }
+)
