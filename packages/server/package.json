@@ -16,8 +16,8 @@
   "license": "Apache-2.0",
   "author": "Tux <tuxsnct@gmail.com>",
   "scripts": {
-    "start": "ts-node ./src/index.ts",
-    "watch": "ts-node --respawn ./src/index.ts",
+    "start": "tsnd ./src/index.ts",
+    "dev": "tsnd --respawn ./src/index.ts",
     "lint": "eslint './{src,.}/**/*.{ts,tsx}'",
     "sort": "sort-package-json"
   },
@@ -27,7 +27,7 @@
     "apollo-server-express": "^2.23.0",
     "express": "^4.17.1",
     "graphql": "^15.5.0",
-    "ts-node": "^9.1.1",
+    "ts-node-dev": "^1.1.6",
     "typescript": "^4.2.4"
   },
   "publishConfig": {

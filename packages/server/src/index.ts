@@ -2,16 +2,15 @@ import { ApolloServer, gql } from 'apollo-server-express'
 import express from 'express'
 import classportal from '../../../classportal.json'
 
-const PORT = classportal.server.port
+const { config } = classportal
+const port = config.server.port || 8000
 
-// Construct a schema, using GraphQL schema language
 const typeDefs = gql`
   type Query {
     hello: String
   }
 `
 
-// Provide resolver functions for your schema fields
 const resolvers = {
   Query: {
     hello: () => {
@@ -20,14 +19,20 @@ const resolvers = {
   }
 }
 
-const server = new ApolloServer({ typeDefs, resolvers })
+const server = new ApolloServer({
+  typeDefs,
+  resolvers,
+  playground: config.server.playground || false
+})
 
 const app = express()
 server.applyMiddleware({ app })
 
 app.listen(
-  { port: PORT },
+  { port: port },
   () => {
-    return console.log(`🚀 Server ready at http://localhost:${PORT}${server.graphqlPath}`)
+    return console.log(
+      `🚀 Server ready at localhost:${port}${server.graphqlPath}`
+    )
   }
 )
