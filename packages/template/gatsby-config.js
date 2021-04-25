@@ -1,6 +1,6 @@
 // eslint-disable-next-line @typescript-eslint/no-var-requires
-const classportal = require('../../classportal.json')
-const { siteMetadata } = classportal.config.client
+const classportal = require('./classportal.json')
+const { siteMetadata } = classportal
 
 const config = {
   plugins: [

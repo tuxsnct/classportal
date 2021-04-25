@@ -1,7 +1,0 @@
-{
-  "cleanUrls": true,
-  "trailingSlash": true,
-  "routes": [
-    { "src": "/api", "dest": "api/server.ts" }
-  ]
-}
