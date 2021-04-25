@@ -1,12 +1,32 @@
 {
   "name": "@classportal/cli",
-  "description": "Scalable, fast, classroom portal",
   "version": "1.0.0",
+  "description": "Scalable, fast, classroom portal",
+  "keywords": [
+    "oclif"
+  ],
+  "homepage": "https://github.com/tuxsnct/classportal",
+  "bugs": "https://github.com/tuxsnct/classportal/issues",
+  "repository": "tuxsnct/classportal",
+  "license": "Apache-2.0",
   "author": "Tux <tuxsnct@gmail.com>",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
   "bin": {
     "cpcli": "./bin/run"
   },
-  "bugs": "https://github.com/tuxsnct/classportal/issues",
+  "files": [
+    "/bin",
+    "/lib",
+    "/npm-shrinkwrap.json",
+    "/oclif.manifest.json"
+  ],
+  "scripts": {
+    "prepack": "rimraf lib && tsc -b && oclif-dev manifest && oclif-dev readme",
+    "postpack": "rimraf oclif.manifest.json",
+    "test": "echo NO TESTS",
+    "version": "oclif-dev readme && git add README.md"
+  },
   "dependencies": {
     "@oclif/command": "^1",
     "@oclif/config": "^1",
@@ -27,31 +47,15 @@
   "engines": {
     "node": ">=8.0.0"
   },
-  "files": [
-    "/bin",
-    "/lib",
-    "/npm-shrinkwrap.json",
-    "/oclif.manifest.json"
-  ],
-  "homepage": "https://github.com/tuxsnct/classportal",
-  "keywords": [
-    "oclif"
-  ],
-  "license": "Apache-2.0",
-  "main": "lib/index.js",
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
   "oclif": {
     "commands": "./lib/commands",
     "bin": "cpcli",
     "plugins": [
       "@oclif/plugin-help"
     ]
-  },
-  "repository": "tuxsnct/classportal",
-  "scripts": {
-    "postpack": "rimraf oclif.manifest.json",
-    "prepack": "rimraf lib && tsc -b && oclif-dev manifest && oclif-dev readme",
-    "test": "echo NO TESTS",
-    "version": "oclif-dev readme && git add README.md"
-  },
-  "types": "lib/index.d.ts"
+  }
 }
