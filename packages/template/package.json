@@ -1,5 +1,5 @@
 {
-  "name": "@classportal/core",
+  "name": "@classportal/template",
   "version": "1.0.0",
   "description": "Scalable, fast, classroom portal",
   "keywords": [
@@ -15,6 +15,22 @@
   },
   "license": "Apache-2.0",
   "author": "Tux <tuxsnct@gmail.com>",
+  "files": [
+    "@types",
+    "api",
+    "src",
+    ".eslintrc.yml",
+    "classportal.yml",
+    "gatsby-browser.js",
+    "gatsby-config.js",
+    "gatsby-node.js",
+    "gatsby-ssr.js",
+    "package.json",
+    "postcss.config.js",
+    "README.md",
+    "tailwind.config.js",
+    "tsconfig.json"
+  ],
   "scripts": {
     "build": "gatsby build",
     "clean": "gatsby clean",
@@ -62,6 +78,7 @@
     "vercel": "^22.0.1"
   },
   "publishConfig": {
+    "access": "public",
     "registry": "https://registry.yarnpkg.com"
   },
   "babelMacros": {
