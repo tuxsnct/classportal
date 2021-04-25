@@ -12,6 +12,7 @@
     },
     "server": {
       "allowOrigin": "*",
+      "graphqlPath": "/graphql",
       "playground": true,
       "port": "5000"
     }
