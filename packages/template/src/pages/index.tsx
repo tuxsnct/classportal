@@ -13,9 +13,6 @@ const IndexPage: FC = () => {
     <BaseLayout title="ホーム">
       <DashboardLayout>
         <CardList>
-          <CardContainer>
-            <CardLabel>Hey</CardLabel>
-          </CardContainer>
         </CardList>
       </DashboardLayout>
     </BaseLayout>
