@@ -3,6 +3,7 @@ import { copySync, existsSync, mkdirSync } from 'fs-extra'
 import { execSync } from 'child_process'
 import { join } from 'path'
 import { chdir, cwd } from 'process'
+import { cli } from 'cli-ux'
 
 export default class New extends Command {
   static description = 'generate a new project from the template'
@@ -48,20 +49,25 @@ export default class New extends Command {
 
     switch (flags.pm) {
       case 'npm':
-        execSync(`npm init -y`)
-        this.log(`directory has been initialized.`)
+        cli.action.start('generating package.json')
+        execSync('npm init -y')
+        cli.action.stop('directory has been initialized.')
+        this.log('directory has been initialized.')
+        cli.action.start('installing dependencies')
         execSync(`npm install ${args.template}`)
         copySync(join(cwd(), 'node_modules', args.template), join(cwd()))
-        execSync(`npm install`)
-        this.log(`dependencies has been installed.`)
+        execSync('npm install')
+        cli.action.stop('dependencies has been installed.')
         break
       case 'yarn':
-        execSync(`yarn init -y`)
-        this.log(`directory has been initialized.`)
+        cli.action.start('generating package.json')
+        execSync('yarn init -y')
+        cli.action.stop('directory has been initialized.')
+        cli.action.start('installing dependencies')
         execSync(`yarn add ${args.template}`)
         copySync(join(cwd(), 'node_modules', args.template), join(cwd()))
-        execSync(`yarn` )
-        this.log(`dependencies has been installed.`)
+        execSync('yarn' )
+        cli.action.stop('dependencies has been installed.')
         break
       default:
         this.error('an unsupported package manager has been specified.')
